@@ -1,0 +1,11 @@
+import = [
+    "~/.config/alacritty/themes/nord.toml"
+]
+
+[font]
+normal.family = "FiraCode Nerd Font Mono"
+bold.family = "FiraCode Nerd Font Mono"
+italic.family = "FiraCode Nerd Font Mono"
+bold_italic.family = "FiraCode Nerd Font Mono"
+
+size = 9.0

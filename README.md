@@ -7,7 +7,7 @@ A configuration for a few popular tiling window managers and various apps I use.
 ![image](https://github.com/Phr0stByte/nixOS_config/blob/main/Screenshots/2025-01-06-164356_hyprshot.png)
 ![image](https://github.com/Phr0stByte/nixOS_config/blob/main/Screenshots/2025-01-06-164012_hyprshot.png)
 
-> About the screenshot: Hyprland, waybar, wofi and wallust.
+> About the screenshot: Hyprland, waybar, wofi and wallust. Notifications are Mako.
 
 ##Qtile
 

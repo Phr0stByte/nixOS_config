@@ -24,6 +24,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  programs.nm-applet.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -43,34 +44,41 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Power profiles for laptop - helps save battery when off AC
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+       governor = "powersave";
+       turbo = "never";
+    };
+    charger = {
+       governor = "performance";
+       turbo = "auto";
+    };
+  };
+
+  #Enable virtualization
+  programs.dconf.enable = true;
+  virtualisation.libvirtd.enable = true;
+
+  # if you use libvirtd on a desktop environment
+  programs.virt-manager.enable = true; # can be used to manage non-local hosts as well
+  services.qemuGuest.enable =true;
+  services.spice-vdagentd.enable = true;
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
   # Enable Desktop Environments.
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.windowManager.qtile.enable = true;
+  services.xserver.windowManager.qtile.extraPackages = p: with p; [ qtile-extras ];
+  programs.hyprland.enable = true;
+  hardware.graphics.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  services.xserver.windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        rofi #application launcher most people use
-        #i3status # gives you the default i3 status bar
-	i3status-rust
-        i3lock #default i3 screen locker
-        i3blocks #if you are planning on using i3blocks over i3status
-        python311Packages.i3-py
-        python311Packages.psutil
-	bumblebee-status
-	xborders
-     ];
-    };
-
-  system.activationScripts.binbash = {
-    deps = [ "binsh" ];
-    text = ''
-         ln -s /bin/sh /bin/bash
-    '';
-  };
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # Enable Flatpak
   services.flatpak.enable = true;
@@ -111,16 +119,27 @@
   users.users.phr0stbyte = {
     isNormalUser = true;
     description = "Rick Wohlschlag";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
     #  thunderbird
     ];
   };
-
+  
+  programs.xfconf.enable = true;
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
+  programs.file-roller.enable = true;
   programs.thunar.plugins = with pkgs.xfce; [
   	thunar-archive-plugin
   	thunar-volman
   ];
+
+  services = {
+    udev.packages = with pkgs; [ 
+        ledger-udev-rules
+        # potentially even more if you need them
+    ];
+  };
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -128,27 +147,53 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  services.clamav.daemon.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   wget
+  alsa-utils
+  brightnessctl
   curl
   cifs-utils
+  clamav
+  clamtk
+  deja-dup
+  fastfetch
+  font-awesome_5
   git
-  gnome.gnome-system-monitor
-  gnome.gnome-keyring
+  gnome-system-monitor
+  gnome-keyring
   gparted
+  hyprlock
+  hyprpaper
+  killall
+  kitty
   pavucontrol
   picom
-  python3
   pulseaudioFull
-  deja-dup
-  neofetch
+  python2
+  python3Full
+  qalculate-gtk
+  redshift
   upower
+  waybar
+  wlogout
+  wofi
   xorg.xbacklight
+  rofi #application launcher most people use
+  i3lock
+  i3lock-fancy #default i3 screen locker
+  xborders
+  xfce.xfburn
   ];
-
+  
+      nixpkgs.config.permittedInsecurePackages = [
+        "python-2.7.18.8"
+      ];
+ 
   # Mount shares.
   fileSystems."/home/phr0stbyte/BIG_BERTHA" = { 
 	device = "192.168.1.3:/volume1/Storage";
@@ -160,6 +205,13 @@
 	fsType = "cifs";
 	options = [ "vers=1.0" "x-systemd.automount" "noauto" ];
   };
+
+  # Automatic Garbage Collection
+  nix.gc = {
+                  automatic = true;
+                  dates = "monthly";
+                  options = "--delete-older-than 30d";
+          };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

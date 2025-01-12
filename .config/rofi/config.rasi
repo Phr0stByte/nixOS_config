@@ -3,4 +3,7 @@
 //@theme "/home/phr0stbyte/.local/share/rofi/themes/squared-nord.rasi"
 //@theme "/home/phr0stbyte/.local/share/rofi/themes/squared-nord.rasi"
 //@theme "/home/phr0stbyte/.local/share/rofi/themes/squared-nord.rasi"
-@theme "/nix/store/z7d73m1ysgqx7x3fiyambkmxqsz7gg4i-rofi-1.7.5/share/rofi/themes/gruvbox-common.rasi"
+//@theme "/nix/store/z7d73m1ysgqx7x3fiyambkmxqsz7gg4i-rofi-1.7.5/share/rofi/themes/gruvbox-common.rasi"
+//@theme "/home/phr0stbyte/.local/share/rofi/themes/squared-nord.rasi"
+//@theme "/home/phr0stbyte/.local/share/rofi/themes/nord.rasi"
+@theme "/nix/store/pfchhfq8dnvjh8pnaws0pspl699z9nfz-rofi-1.7.5/share/rofi/themes/Paper.rasi"

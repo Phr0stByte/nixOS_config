@@ -38,6 +38,7 @@ import colors
 mod = "mod4"              # Sets mod key to SUPER/WINDOWS
 myTerm = "alacritty"      # My terminal of choice
 myBrowser = "brave"       # My browser of choice
+screenLock = "/home/phr0stbyte/.config/qtile/i3lock.sh"
 #myEmacs = "emacsclient -c -a 'emacs' " # The space at the end is IMPORTANT!
 
 # Allows you to input a name when adding treetab section.
@@ -82,6 +83,13 @@ keys = [
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +5%")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -5%")),
+    Key([], "XF86AudioMute",lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
+    Key([], "XF86AudioMicMute",lazy.spawn("pactl set-source-mute 55 toggle")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
 
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -140,7 +148,8 @@ keys = [
     Key([mod], "t", lazy.window.toggle_floating(), desc='toggle floating'),
     Key([mod], "f", maximize_by_switching_layout(), lazy.window.toggle_fullscreen(), desc='toggle fullscreen'),
     Key([mod, "shift"], "m", minimize_all(), desc="Toggle hide/show all windows on current group"),
-
+    Key([mod, "shift"], "x", lazy.spawn(screenLock), desc="Screen Lock"),
+    
     # Switch focus of monitors
     Key([mod], "period", lazy.next_screen(), desc='Move focus to next monitor'),
     Key([mod], "comma", lazy.prev_screen(), desc='Move focus to prev monitor'),
@@ -184,7 +193,7 @@ group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9",]
 
 #group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9",]
 #group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX",]
-group_labels = ["", "", "", "4", "5", "6", "7", "8", "9",]
+group_labels = ["", "", "", "", "", "󰠟", "󱀇", "8", "9",]
 
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
 
@@ -218,8 +227,8 @@ for i in groups:
 
 colors = colors.Nord
 
-layout_theme = {"border_width": 2,
-                "margin": 8,
+layout_theme = {"border_width": 3,
+                "margin": 10,
                 "border_focus": colors[8],
                 "border_normal": colors[0]
                 }
@@ -233,7 +242,7 @@ layouts = [
     layout.MonadTall(**layout_theme),
     #layout.MonadWide(**layout_theme),
     layout.Tile(
-         shift_windows=True,
+         shift_windows=False,
          border_width = 0,
          margin = 0,
          ratio = 0.335,
@@ -290,7 +299,7 @@ def init_widgets_list():
                  foreground = colors[1]
         ),
         widget.GroupBox(
-                 fontsize = 11,
+                 fontsize = 12,
                  margin_y = 5,
                  margin_x = 5,
                  padding_y = 0,
@@ -347,13 +356,24 @@ def init_widgets_list():
                #  ],
                #  ),
         widget.Spacer(length = 8),
+        widget.CryptoTicker(
+                 foreground = colors[7],
+                 format = '󰠓  {crypto}:{amount:,.2f}',
+                 decorations=[
+                     BorderDecoration(
+                         colour = colors[7],
+                         border_width = [0, 0, 4, 0],
+                     )
+                 ],
+                 ),               
+        widget.Spacer(length = 8),
         widget.CPU(
-                 format = '▓  Cpu: {load_percent}%',
+                 format = '   Cpu: {load_percent}%',
                  foreground = colors[4],
                  decorations=[
                      BorderDecoration(
                          colour = colors[4],
-                         border_width = [0, 0, 2, 0],
+                         border_width = [0, 0, 4, 0],
                      )
                  ],
                  ),
@@ -362,11 +382,11 @@ def init_widgets_list():
                  foreground = colors[8],
                  mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e btop')},
                  format = '{MemUsed: .0f}{mm}',
-                 fmt = '🖥  Mem: {} used',
+                 fmt = '   Mem:{} used',
                  decorations=[
                      BorderDecoration(
                          colour = colors[8],
-                         border_width = [0, 0, 2, 0],
+                         border_width = [0, 0, 4, 0],
                      )
                  ],
                  ),
@@ -383,7 +403,7 @@ def init_widgets_list():
                  decorations=[
                      BorderDecoration(
                          colour = colors[5],
-                         border_width = [0, 0, 2, 0],
+                         border_width = [0, 0, 4, 0],
                      )
                  ],
                  ),
@@ -394,7 +414,7 @@ def init_widgets_list():
                  decorations=[
                      BorderDecoration(
                          colour = colors[7],
-                         border_width = [0, 0, 2, 0],
+                         border_width = [0, 0, 4, 0],
                      )
                  ],
                  ),
@@ -405,25 +425,39 @@ def init_widgets_list():
                  decorations=[
                      BorderDecoration(
                          colour = colors[4],
-                         border_width = [0, 0, 2, 0],
+                         border_width = [0, 0, 4, 0],
                      )
                  ],
                  ),
         widget.Spacer(length = 8),
         widget.Clock(
                  foreground = colors[8],
-                 format = "⏱  %a, %b %d - %-I:%M %p",
+                 format = "  %a, %b %d - %-I:%M %p",
                  decorations=[
                      BorderDecoration(
                          colour = colors[8],
-                         border_width = [0, 0, 2, 0],
+                         border_width = [0, 0, 4, 0],
                      )
                  ],
                  ),
         widget.Spacer(length = 8),
         widget.Systray(padding = 3),
         widget.Spacer(length = 8),
-
+        widget.Spacer(length = 4),
+        
+        widget.QuickExit(
+                 foreground = colors[5],
+                 default_text = ' ',
+                 fontsize = 14,      
+                 decorations=[
+                     BorderDecoration(
+                         colour = colors[5],
+                         border_width = [0, 0, 4, 0],
+                     )
+                 ],
+                 ),        
+        widget.Spacer(length = 4),
+        widget.Spacer(length = 4),
         ]
     return widgets_list
 
@@ -441,9 +475,9 @@ def init_widgets_screen2():
 # For ex: Screen(top=bar.Bar(widgets=init_widgets_screen2(), background="#00000000", size=24)),
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=26)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), margin = [10,10,0,10], size=34)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin = [10,10,0,10], size=34)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin = [10,10,0,10], size=34))]
 
 if __name__ in ["config", "__main__"]:
     screens = init_screens()

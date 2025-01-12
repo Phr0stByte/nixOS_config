@@ -1,0 +1,19 @@
+backend = "full"
+color_space = "lch"
+palette = "dark"
+
+[templates]
+cava.template = 'templates/colors-cava'
+cava.target = '~/.config/cava/config'
+
+hypr.template = 'templates/colors-hypr.conf'
+hypr.target = '~/.config/hypr/themes/wallust.conf'
+
+waybar.template = 'templates/colors-waybar.css'
+waybar.target = '~/.config/waybar/wallust.css'
+
+wofi.template = 'templates/colors-waybar.css'
+wofi.target = '~/.config/wofi/style.css'
+
+mako.template = 'templates/colors-mako'
+mako.target = '~/.config/mako/config'

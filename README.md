@@ -10,6 +10,7 @@ A configuration for a few popular tiling window managers and various apps I use.
   <tr><td>NixOS</td><td>Linux Distro</td/td><></tr>
   <tr><td>Hyprland<td>Window Manager & Compositor</td></tr>
   <tr><td>Waybar</td><td>Bar</td></tr>
+  <tr><td>Wofi</td><td>App Launcher & Menu</td></tr>
   <tr><td>Wallust</td><td>Themes</td></tr>
   <tr><td>Ghostty</td><td>terminal emulator</td></tr>
   <tr><td>Mako</td><td>Notifications</td></tr>
@@ -31,6 +32,7 @@ A configuration for a few popular tiling window managers and various apps I use.
   <code>a</code><br><code>p</code><br><code>p</code><br><code>s</code><br></td><td><table>
   <tr><td>NixOS</td><td>Linux Distro</td></tr>
   <tr><td>Qtile</td><td>Window Manager</td></tr>
+  <tr><td>Rofi</td><td>App Launcher & Menu</td></tr>
   <tr><td>Ghostty</td><td>terminal emulator</td></tr>
   <tr><td>Mako</td><td>Notifications</td></tr>
   <tr><td>Thunar</td><td>file explorer</td></tr>
@@ -50,6 +52,7 @@ A configuration for a few popular tiling window managers and various apps I use.
   <tr><td>NixOS</td><td>Linux Distro</td></tr>
   <tr><td>i3</td><td>Window Manager</td></tr>
   <tr><td>Polybar</td><td>Bar</td></tr>
+  <tr><td>Rofi</td><td>App Launcher & Menu</td></tr>
   <tr><td>Ghostty</td><td>terminal emulator</td></tr>
   <tr><td>Mako</td><td>Notifications</td></tr>
   <tr><td>Thunar</td><td>file explorer</td></tr>

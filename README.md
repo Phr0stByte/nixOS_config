@@ -7,9 +7,10 @@ A configuration for a few popular tiling window managers and various apps I use.
 
 <table><tr><td>
   <code>a</code><br><code>p</code><br><code>p</code><br><code>s</code><br></td><td><table>
-  <tr><td>NixOS</td><td>Linux Distro</td></tr>
-  <tr><td>Hyprland</td><td>Window Manager & Compositor</td></tr>
+  <tr><td>NixOS</td><td>Linux Distro</td/td><></tr>
+  <tr><td>Hyprland<td>Window Manager & Compositor</td></tr>
   <tr><td>Waybar</td><td>Bar</td></tr>
+  <tr><td>Wallust</td><td>Themes</td></tr>
   <tr><td>Ghostty</td><td>terminal emulator</td></tr>
   <tr><td>Mako</td><td>Notifications</td></tr>
   <tr><td>Thunar</td><td>file explorer</td></tr>

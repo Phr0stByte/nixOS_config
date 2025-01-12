@@ -9,6 +9,7 @@ A configuration for a few popular tiling window managers and various apps I use.
   <code>a</code><br><code>p</code><br><code>p</code><br><code>s</code><br></td><td><table>
   <tr><td>NixOS</td><td>Linux Distro</td></tr>
   <tr><td>Hyprland</td><td>Window Manager & Compositor</td></tr>
+  <tr><td>Waybar</td><td>Bar</td></tr>
   <tr><td>Ghostty</td><td>terminal emulator</td></tr>
   <tr><td>Mako</td><td>Notifications</td></tr>
   <tr><td>Thunar</td><td>file explorer</td></tr>
@@ -23,6 +24,19 @@ A configuration for a few popular tiling window managers and various apps I use.
 > About the screenshot: Hyprland, waybar, wofi and wallust. Notifications are Mako.
 
 ## Qtile
+## Software Used
+
+<table><tr><td>
+  <code>a</code><br><code>p</code><br><code>p</code><br><code>s</code><br></td><td><table>
+  <tr><td>NixOS</td><td>Linux Distro</td></tr>
+  <tr><td>Qtile</td><td>Window Manager</td></tr>
+  <tr><td>Ghostty</td><td>terminal emulator</td></tr>
+  <tr><td>Mako</td><td>Notifications</td></tr>
+  <tr><td>Thunar</td><td>file explorer</td></tr>
+  <tr><td>Picom</td><td>Compositor</td></tr>
+  <tr><td>Flameshot</td><td>screenshots</td></tr>
+  <tr><td>Brave</td><td>browser</td></tr></table>
+</td></tr></table>
 
 ![image](https://raw.githubusercontent.com/Phr0stByte/nixOS_config/refs/heads/main/Screenshots/back-on-qtile-with-a-new-to-me-distro-v0-l1eezmdnhp9d1.webp)
 ![image](https://raw.githubusercontent.com/Phr0stByte/nixOS_config/refs/heads/main/Screenshots/back-on-qtile-with-a-new-to-me-distro-v0-b623evdnhp9d1.webp)
@@ -30,6 +44,18 @@ A configuration for a few popular tiling window managers and various apps I use.
 > About the screenshot: Pure Qtile (even the bar).
 
 ## i3
+<table><tr><td>
+  <code>a</code><br><code>p</code><br><code>p</code><br><code>s</code><br></td><td><table>
+  <tr><td>NixOS</td><td>Linux Distro</td></tr>
+  <tr><td>i3</td><td>Window Manager</td></tr>
+  <tr><td>Polybar</td><td>Bar</td></tr>
+  <tr><td>Ghostty</td><td>terminal emulator</td></tr>
+  <tr><td>Mako</td><td>Notifications</td></tr>
+  <tr><td>Thunar</td><td>file explorer</td></tr>
+  <tr><td>Picom</td><td>Compositor</td></tr>
+  <tr><td>Flameshot</td><td>screenshots</td></tr>
+  <tr><td>Brave</td><td>browser</td></tr></table>
+</td></tr></table>
 
 ![image](https://raw.githubusercontent.com/Phr0stByte/nixOS_config/refs/heads/main/Screenshots/i3wm-nordish-v0-jyw33o3b9c9d1.webp)
 ![image](https://raw.githubusercontent.com/Phr0stByte/nixOS_config/refs/heads/main/Screenshots/i3wm-nordish-v0-5yl9wr3b9c9d1.webp)

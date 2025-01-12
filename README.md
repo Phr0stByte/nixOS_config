@@ -3,6 +3,19 @@
 A configuration for a few popular tiling window managers and various apps I use. Feel free to use anything you see fit to, or make suggestions to me on how to make this repo better.
 
 ## Hyprland
+## Software Used
+
+<table><tr><td>
+  <code>a</code><br><code>p</code><br><code>p</code><br><code>s</code><br></td><td><table>
+  <tr><td>NixOS</td><td>Linux Distro</td></tr>
+  <tr><td>Hyprland</td><td>Window Manager & Compositor</td></tr>
+  <tr><td>Ghostty</td><td>terminal emulator</td></tr>
+  <tr><td>Mako</td><td>Notifications</td></tr>
+  <tr><td>Thunar</td><td>file explorer</td></tr>
+  <tr><td>Hyprlock</td><td>Screen lock</td></tr>
+  <tr><td>Hyprshot</td><td>screenshots</td></tr>
+  <tr><td>Brave</td><td>browser</td></tr></table>
+</td></tr></table>
 
 ![image](https://github.com/Phr0stByte/nixOS_config/blob/main/Screenshots/2025-01-06-164356_hyprshot.png)
 ![image](https://github.com/Phr0stByte/nixOS_config/blob/main/Screenshots/2025-01-06-164012_hyprshot.png)

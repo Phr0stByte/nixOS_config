@@ -70,4 +70,4 @@ A configuration for a few popular tiling window managers and various apps I use.
 ## Wallpaper repository
 
 You will find all wallpapers used in the screenshots (and more). They have been collected from around the web, so as much as I would like to give credit to the creators,
-I can't even remember wher I have downloaded most of them from.
+I can't even remember where I have downloaded most of them from.
